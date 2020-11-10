@@ -22,3 +22,8 @@ class Settings:
         self.alien_spacing_edge_x = 32      # spacing on the screen edge
         self.alien_spacing_between_y = 32
         self.alien_spacing_edge_y = 32
+
+        self.alien_speed = 0.04
+        self.fleet_drop_speed = 2
+        # fleet_direction of 1 represents right, -1 represents left
+        self.fleet_direction = 1
