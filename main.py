@@ -15,31 +15,38 @@ class AlienInvasion:
 
         self.ship = Ship(self)
 
-    def run_game(self):
-        """Start the main loop for the game"""
-        while True:
-            self._check_events()
-            self.ship.update()
-            self._update_screeen()
-
-
-
     def _check_events(self):
         for event in pygame.event.get():
             event_type = event.type
             if event_type == pygame.QUIT:
                 sys.exit()
             elif event_type == pygame.KEYDOWN:
-                key = event.key
-                if key == pygame.K_RIGHT:
-                    self.ship.is_moving_right = True
-                elif key == pygame.K_LEFT:
-                    self.ship.is_moving_left = True
+                self._check_keydown_events(event)
             elif event_type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    self.ship.is_moving_right = False
-                elif event.key == pygame.K_LEFT:
-                    self.ship.is_moving_left = False
+                self._check_keyup_events(event)
+
+    def _check_keydown_events(self, event):
+        key = event.key
+        if key == pygame.K_RIGHT:
+            self.ship.is_moving_right = True
+        elif key == pygame.K_LEFT:
+            self.ship.is_moving_left = True
+
+    def _check_keyup_events(self, event):
+        key = event.key
+        if key == pygame.K_RIGHT:
+            self.ship.is_moving_right = False
+        elif key == pygame.K_LEFT:
+            self.ship.is_moving_left = False
+
+
+
+    def run_game(self):
+        """Start the main loop for the game"""
+        while True:
+            self._check_events()
+            self.ship.update()
+            self._update_screeen()
 
     def _update_screeen(self):
         self.screen.fill(self.settings.bg_color)
