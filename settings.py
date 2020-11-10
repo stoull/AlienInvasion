@@ -9,3 +9,16 @@ class Settings:
 
         # ship settings
         self.ship_speed = 1.5
+
+        # Bullet settings
+        self.bullet_speed = 1.0
+        self.bullet_width = 2
+        self.bullet_height = 5
+        self.bullet_color = (60, 60, 60)
+        self.bullet_allowed = 3         # a number of bullets allowed show the same time on the screen
+
+        # Alien settings
+        self.alien_spacing_between_x = 32   # spacing between two alien, it'll change depends on the size of alien's image
+        self.alien_spacing_edge_x = 32      # spacing on the screen edge
+        self.alien_spacing_between_y = 32
+        self.alien_spacing_edge_y = 32
