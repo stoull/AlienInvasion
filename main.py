@@ -52,9 +52,14 @@ class AlienInvasion:
         elif key == pygame.K_q:
             sys.exit()
         elif key == pygame.K_r:
-            self.level_ctr.change_weapon_mode('r')
+            self.level_ctr.change_weapon_mode('boost')
         elif key == pygame.K_SPACE:
             self._fire_bullet()
+        elif key == pygame.K_l:
+            self.level_ctr.change_weapon_mode('super')
+        else:
+            pass
+            print(f"key down {key}")
 
     def _check_keyup_events(self, event):
         key = event.key
@@ -144,7 +149,6 @@ class AlienInvasion:
 
         self.aliens.update()
 
-
     def _update_screeen(self):
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
@@ -168,8 +172,8 @@ class AlienInvasion:
             # Destory existing bullets and create new fleet
             self.bullets.empty()
             # level up
-            self.level_ctr.level_up()
-            self._create_fleet()
+            if self.level_ctr.level_up():
+                self._create_fleet()
 
     def _ship_hit(self):
         """Respond to the ship being hit by an alien"""

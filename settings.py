@@ -28,7 +28,8 @@ class Settings:
         self.alien_spacing_between_y = 2
         self.alien_spacing_edge_y = 0
         # The spaces between alien and ship in the begining of the game
-        self.alien_ship_frontline = self.screen_height - self.alien_spacing_edge_y - self.alien_spacing_between_y - 120
+        self.alien_ship_frontline = self.screen_height - self.alien_spacing_edge_y - \
+                                    self.alien_spacing_between_y - 120
 
         self.alien_speed = 0.1
         self.fleet_drop_speed = 1
