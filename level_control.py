@@ -7,6 +7,8 @@ class LevelController:
         self.settings = ai_game.settings
         self.settings_copy = deepcopy(self.settings)
 
+        self.current_level = 0
+
     def level_up(self):
         self._clean_before_levelup()
         if self.current_level <= self.settings.level_max:
