@@ -15,6 +15,9 @@ class AlienInvasion:
         self.settings = Settings()
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        # self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        # self.settings.screen_width = self.screen.get_rect().width
+        # self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
@@ -75,7 +78,8 @@ class AlienInvasion:
 
         spacing_between_y = self.settings.alien_spacing_between_y   # spacing between two alien
         spacing_edge_y = self.settings.alien_spacing_edge_y      # spacing on the screen edge
-        availbe_height_y = self.settings.screen_height - (2 * spacing_edge_y) - self.ship.rect.height
+        availbe_height_y = self.settings.screen_height - (2 * spacing_edge_y)\
+                           - self.ship.rect.height - self.settings.alien_ship_frontline
         number_aliens_y = int(availbe_height_y // (alien_height + spacing_between_y))
 
         for num_y in range(number_aliens_y):
