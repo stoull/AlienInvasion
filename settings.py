@@ -7,6 +7,9 @@ class Settings:
         self.screen_height = 400
         self.bg_color = (230, 230, 230)
 
+        # level
+        self.level_max = 12
+
         # ship settings
         self.ship_speed = 1.5
         self.ship_limit = 3
@@ -16,6 +19,7 @@ class Settings:
         self.bullet_width = 2
         self.bullet_height = 5
         self.bullet_color = (60, 60, 60)
+        self.bullet_is_penetration = False
         self.bullet_allowed = 3         # a number of bullets allowed show the same time on the screen
 
         # Alien settings
@@ -23,7 +27,8 @@ class Settings:
         self.alien_spacing_edge_x = 32      # spacing on the screen edge
         self.alien_spacing_between_y = 2
         self.alien_spacing_edge_y = 0
-        self.alien_ship_frontline = 120     # The spaces between alien and ship in the begining of the game
+        # The spaces between alien and ship in the begining of the game
+        self.alien_ship_frontline = self.screen_height - self.alien_spacing_edge_y - self.alien_spacing_between_y - 120
 
         self.alien_speed = 0.1
         self.fleet_drop_speed = 1

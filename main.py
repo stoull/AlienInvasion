@@ -6,6 +6,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
+from level_control import LevelController
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -24,6 +25,8 @@ class AlienInvasion:
         self.stats = GameStats(self)
         self.stats.game_stas_active = True
 
+        self.level_ctr = LevelController(self)
+
         # storing Bullets in a Group
         self.bullets = pygame.sprite.Group()
         # storing Alien ships
@@ -35,9 +38,9 @@ class AlienInvasion:
             event_type = event.type
             if event_type == pygame.QUIT:
                 sys.exit()
-            elif event_type == pygame.KEYDOWN:
+            elif event_type == pygame.KEYDOWN:  # press the keyboard down
                 self._check_keydown_events(event)
-            elif event_type == pygame.KEYUP:
+            elif event_type == pygame.KEYUP:    # left finger form keyboard
                 self._check_keyup_events(event)
 
     def _check_keydown_events(self, event):
@@ -48,6 +51,8 @@ class AlienInvasion:
             self.ship.is_moving_left = True
         elif key == pygame.K_q:
             sys.exit()
+        elif key == pygame.K_r:
+            self.level_ctr.change_weapon_mode('r')
         elif key == pygame.K_SPACE:
             self._fire_bullet()
 
@@ -154,13 +159,16 @@ class AlienInvasion:
         """Respond to bullet-alien collisions."""
         # Check for any bullets that have hit aliens.
         # If so, get rid of the bullet and the alien.
+        is_penetration = self.settings.bullet_is_penetration
         collisions = pygame.sprite.groupcollide(
-            self.bullets, self.aliens, True, True
+            self.bullets, self.aliens, not is_penetration, True
         )
 
         if not self.aliens:
             # Destory existing bullets and create new fleet
             self.bullets.empty()
+            # level up
+            self.level_ctr.level_up()
             self._create_fleet()
 
     def _ship_hit(self):
