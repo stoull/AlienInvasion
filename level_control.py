@@ -49,7 +49,8 @@ class LevelController:
         self.settings.fleet_drop_speed += 0.5
 
     def _level_up_ship(self):
-        self.settings.ship_speed -= 0.2
+        pass
+        # self.settings.ship_speed -= 0.2
 
     def _level_up_frontline(self):
         self.settings.alien_ship_frontline -= 16
