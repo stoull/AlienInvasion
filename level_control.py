@@ -7,6 +7,8 @@ class LevelController:
         self.settings = ai_game.settings
         self.settings_copy = deepcopy(self.settings)
 
+        self.speedup_scale = 1.1
+
         self.current_level = 0
 
     def level_up(self):
@@ -45,8 +47,8 @@ class LevelController:
         if self.settings.alien_spacing_edge_y > 0:
             self.settings.alien_spacing_edge_y -=2
 
-        self.settings.alien_speed += 0.05
-        self.settings.fleet_drop_speed += 0.5
+        self.settings.alien_speed *= self.speedup_scale
+        self.settings.fleet_drop_speed *= self.speedup_scale
 
     def _level_up_ship(self):
         pass
