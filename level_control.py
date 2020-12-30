@@ -11,12 +11,15 @@ class LevelController:
 
         self.current_level = 0
 
+        self.score_scale = 1.5
+
     def level_up(self):
         self._clean_before_levelup()
         if self.current_level <= self.settings.level_max:
             self._level_up_alien()
             self._level_up_ship()
             self._level_up_frontline()
+            self._level_up_score()
             self.current_level +=1
             return  True
         else:
@@ -59,3 +62,6 @@ class LevelController:
 
     def _level_up_bullet(self):
         self.settings.bullet_allowed +=1
+
+    def _level_up_score(self):
+        self.settings.alien_points = int(self.settings.alien_points * self.score_scale)

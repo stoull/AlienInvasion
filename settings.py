@@ -26,7 +26,7 @@ class Settings:
         self.alien_spacing_between_x = 66   # spacing between two alien, it'll change depends on the size of alien's image
         self.alien_spacing_edge_x = 32      # spacing on the screen edge
         self.alien_spacing_between_y = 2
-        self.alien_spacing_edge_y = 0
+        self.alien_spacing_edge_y = 44
         # The spaces between alien and ship in the begining of the game
         self.alien_ship_frontline = self.screen_height - self.alien_spacing_edge_y - \
                                     self.alien_spacing_between_y - 120
@@ -35,3 +35,7 @@ class Settings:
         self.fleet_drop_speed = 1
         # fleet_direction of 1 represents right, -1 represents left
         self.fleet_direction = 1
+
+        # Scoring
+        self.alien_points = 50
+
